@@ -8,20 +8,16 @@ import (
 	"os"
 )
 
-
 func main() {
 
 	bot, err := linebot.New(
 		os.Getenv("CHANNEL_SECRET"),
 		os.Getenv("CHANNEL_TOKEN"),
 	)
-	if err != nil {
-		log.Fatal(err)
-	}
+	if err != nil {log.Fatal(err)}
 
 	// Setup HTTP Server for receiving requests from LINE platform
 	http.HandleFunc("/callback", func(w http.ResponseWriter, req *http.Request) {
-
 
 		events, err := bot.ParseRequest(req)
 		if err != nil {
@@ -34,10 +30,7 @@ func main() {
 		}else{
 			w.WriteHeader(200)
 		}
-
 		line.Replay(bot,events)
-
-
 	})
 
 	port := os.Getenv("PORT")
