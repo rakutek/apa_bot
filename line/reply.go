@@ -27,24 +27,17 @@ type Data struct {
 	Image  string
 }
 
-
-
 func Replay(bot *linebot.Client,events []*linebot.Event) {
 
 	dic := tokenizer.SysDicSimple()
 	t := tokenizer.NewWithDic(dic)
-
 	ctx := context.Background()
 	client, _ := datastore.NewClient(ctx, "apa-bot-276111")
 
-
 	for _, event := range events {
-
-
 		if event.Type == linebot.EventTypeMessage {
 
 			switch m := event.Message.(type) {
-
 			case *linebot.TextMessage:
 				var pages []Data
 				var num int
@@ -57,7 +50,6 @@ func Replay(bot *linebot.Client,events []*linebot.Event) {
 
 						t := time.Now().UTC()
 						df := t.Format("2006-01-02")
-
 						log.Printf("duo_" + df[8:])
 						query := datastore.NewQuery("duo_"+df[8:]).
 							Filter("Search =", token.Surface)
@@ -66,9 +58,8 @@ func Replay(bot *linebot.Client,events []*linebot.Event) {
 
 						for {
 							var data Data
-							_, errr := it.Next(&data)
-
-							if errr != nil {
+							_, err := it.Next(&data)
+							if err != nil {
 								break
 							} else {
 								pages = append(pages, data)
@@ -89,9 +80,7 @@ func Replay(bot *linebot.Client,events []*linebot.Event) {
 						log.Print(err)
 					}
 				} else {
-
 					for i := 0; i < num; i++ {
-
 						val := map[string]interface{}{
 							"type":   "text",
 							"text":   "料金",
@@ -110,9 +99,7 @@ func Replay(bot *linebot.Client,events []*linebot.Event) {
 						}
 
 						con := []map[string]interface{}{}
-
 						con = append(con, val)
-
 						con = append(con, val2)
 
 						ac := map[string]interface{}{
@@ -249,19 +236,11 @@ func Replay(bot *linebot.Client,events []*linebot.Event) {
 					if err != nil {
 						fmt.Println(err)
 					}
-					for _, event := range events {
-						if event.Type == linebot.EventTypeMessage {
-							switch event.Message.(type) {
 
-							case *linebot.TextMessage:
-
-								if _, err := bot.ReplyMessage(
-									event.ReplyToken,
-									linebot.NewFlexMessage("alt text", container),
-								).Do(); err != nil {
-								}
-							}
-						}
+					if _, err := bot.ReplyMessage(
+						event.ReplyToken,
+						linebot.NewFlexMessage("alt text", container),
+					).Do(); err != nil {
 					}
 				}
 			}
