@@ -78,14 +78,14 @@ func Json(num int, cts []map[string]interface{}, pages []Data) []map[string]inte
 				"layout": "vertical",
 				"contents": []map[string]interface{}{
 
-					map[string]interface{}{
+					{
 						"type":   "text",
 						"text":   pages[i].Name,
 						"weight": "bold",
 						"size":   "lg",
 					},
 
-					map[string]interface{}{
+					{
 						"type":   "box",
 						"layout": "baseline",
 						"margin": "md",
@@ -93,19 +93,19 @@ func Json(num int, cts []map[string]interface{}, pages []Data) []map[string]inte
 						"contents": con,
 					},
 
-					map[string]interface{}{
+					{
 						"type":    "box",
 						"layout":  "vertical",
 						"margin":  "lg",
 						"spacing": "sm",
 						"contents": []map[string]interface{}{
-							map[string]interface{}{
+							{
 								"type":    "box",
 								"layout":  "baseline",
 								"spacing": "sm",
 
 								"contents": []map[string]interface{}{
-									map[string]interface{}{
+									{
 										"type":  "text",
 										"text":  "行き方",
 										"color": "#aaaaaa",
@@ -113,7 +113,7 @@ func Json(num int, cts []map[string]interface{}, pages []Data) []map[string]inte
 										"flex":  1,
 									},
 
-									map[string]interface{}{
+									{
 										"type":  "text",
 										"text":  pages[i].Way,
 										"wrap":  true,
@@ -124,13 +124,13 @@ func Json(num int, cts []map[string]interface{}, pages []Data) []map[string]inte
 								},
 							},
 
-							map[string]interface{}{
+							{
 								"type":    "box",
 								"layout":  "baseline",
 								"spacing": "sm",
 
 								"contents": []map[string]interface{}{
-									map[string]interface{}{
+									{
 										"type":  "text",
 										"text":  "空室",
 										"color": "#aaaaaa",
@@ -138,7 +138,7 @@ func Json(num int, cts []map[string]interface{}, pages []Data) []map[string]inte
 										"flex":  1,
 									},
 
-									map[string]interface{}{
+									{
 										"type":  "text",
 										"text":  pages[i].Room,
 										"wrap":  true,
@@ -160,7 +160,7 @@ func Json(num int, cts []map[string]interface{}, pages []Data) []map[string]inte
 				"flex":    0,
 
 				"contents": []map[string]interface{}{
-					map[string]interface{}{
+					{
 						"type":   "button",
 						"style":  "link",
 						"height": "sm",
