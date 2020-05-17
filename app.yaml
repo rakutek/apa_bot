@@ -1,0 +1,23 @@
+runtime: go111
+
+
+instance_class: F1
+automatic_scaling:
+  target_cpu_utilization: 0.70
+  target_throughput_utilization: 0.70
+  min_idle_instances: 0
+  max_idle_instances: 1
+  min_instances: 0
+  min_pending_latency: automatic
+  max_pending_latency: automatic
+  max_concurrent_requests: 80
+
+includes:
+  - secret.yaml
+
+
+handlers:
+
+  # All URLs are handled by the Go application script
+  - url: /.*
+    script: auto
