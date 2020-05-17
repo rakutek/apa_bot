@@ -11,6 +11,7 @@ import (
 	"strconv"
 	"strings"
 	"time"
+	"os"
 )
 
 type Data struct {
@@ -179,7 +180,7 @@ func Replay(bot *linebot.Client, events []*linebot.Event) {
 	dic := tokenizer.SysDicSimple()
 	t := tokenizer.NewWithDic(dic)
 	ctx := context.Background()
-	client, _ := datastore.NewClient(ctx, "apa-bot-276111")
+	client, _ := datastore.NewClient(ctx, os.Getenv("GCP"))
 
 	for _, event := range events {
 		if event.Type == linebot.EventTypeMessage {
