@@ -47,7 +47,7 @@ func Json(num int, cts []map[string]interface{}, pages []Data) []map[string]inte
 			"margin": "lg",
 		}
 
-		con := []map[string]interface{}{}
+		var con []map[string]interface{}
 		con = append(con, val)
 		con = append(con, val2)
 
