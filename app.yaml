@@ -12,6 +12,9 @@ automatic_scaling:
   max_pending_latency: automatic
   max_concurrent_requests: 80
 
+includes:
+  - secret.yaml
+
 
 handlers:
 
