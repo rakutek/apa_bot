@@ -46,8 +46,4 @@ func main() {
 
 }
 
-// gcloud beta emulators datastore start --host-port localhost:8059 --project apa-bot-274108  --data-dir='/Users/raku/Library/Mobile Documents/com~apple~CloudDocs/dev/apabot/data/'
-// env DATASTORE_EMULATOR_HOST=localhost:8059 DATASTORE_PROJECT_ID=apa-bot-274108 go run line.go
-// google-cloud-gui
-
 // dev_appserver.py app.yaml --enable_host_checking=false
